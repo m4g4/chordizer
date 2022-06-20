@@ -1,0 +1,335 @@
+
+/* ------------ COLORS ------------ */
+
+.chordizer.black {
+ --color: #444;
+}
+.chordizer,
+.chordizer.orange {
+ --color: #fe8914;
+}
+
+.chordizer .chord {
+    width: 76px;
+    flex: 0 0 auto;
+    margin: 5px 20px;
+}
+
+.chordizer .chord .ChordName {
+    font-size: 14px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.chordizer .chord .FretNum {
+    position: relative;
+    height: 0px;
+    left: -14px;
+    top: 22px;
+    font-size: 14px;
+}
+
+.chordizer .chord table {
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+.chordizer .chord table .Fret td {
+    border-top: 1px solid #666666;
+    border-left: 1px solid #666666;
+    border-bottom: 0;
+    padding: 0;
+    height: 21px;
+    position: relative;
+}
+
+.chordizer .chord table .Fret.Zero td {
+    border: 0;
+    border-bottom: 5px solid #666666;
+}
+
+.chordizer .chord table .Fret td:nth-child(1),
+.chordizer .chord table .Fret td:nth-child(2) {
+    border-left-width: 3px;
+}
+
+.chordizer .chord table .Fret td:nth-child(3),
+.chordizer .chord table .Fret td:nth-child(4) {
+    border-left-width: 2px;
+}
+
+.chordizer .chord table .Fret td:last-child {
+    width: 1px;
+}
+
+.chordizer .chord:not(.hasFiveFrets) table .Fret.Fourth td {
+    border-bottom: 1px solid #666666;
+}
+
+.chordizer .chord table .Fret.Fifth td {
+    border-bottom: 1px solid #666666;
+}
+
+.chordizer .chord table .Fret td.Muted {
+    border-left-color: #d7cccc;
+}
+
+/* Marks */
+
+.chordizer .chord table .OpenString {
+    border-radius: 6px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--color);
+    position: absolute;
+    top: 0;
+    left: -5px;
+}
+
+.chordizer .chord table .OpenString .Note {
+    position: absolute;
+    display: inline-block;
+    width: 10px;
+    text-align: center;
+    left: 0px;
+    top: -1px;
+    font-size: 8px;
+    font-weight: bold;
+    color: var(--color);
+}
+
+.chordizer .chord table .Mute {
+    position: absolute;
+    top: 0;
+    left: -3px;
+    line-height: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #757575;
+}
+
+.chordizer .chord table .Press {
+    border-radius: 6px;
+    border: 1px solid var(--color);
+    background-color: var(--color);
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 4px;
+    left: -7px
+}
+
+.chordizer .chord table .Barre {
+    border: 1px solid var(--color);
+    background-color: var(--color);
+    width: 15px;
+    height: 12px;
+    position: absolute;
+    top: 4px;
+    left: -7px
+}
+
+.chordizer .chord table .Barre.Start {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.chordizer .chord table .Barre.End {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    width: 12px;
+}
+
+.chordizer .chord table .Barre .Finger,
+.chordizer .chord table .Press .Finger {
+    font-size: 10px;
+    font-weight: bold;
+    color: #ffffff;
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    display: inline-block;
+    width: 5px;
+    text-align: center;
+}
+
+/* ------------- SMALL -------------- */
+
+.chordizer .chord.small { width: 44px; }
+.chordizer .chord.small .ChordName { font-size: 12px; }
+.chordizer .chord.small .FretNum {
+    left: -12px;
+    top: 9px;
+    font-size: 12px;
+}
+
+.chordizer .chord.small table .Fret td {
+    border-top: 1px solid #666666;
+    border-left: 1px solid #666666;
+    height: 12px;
+}
+
+.chordizer .chord.small table .Fret.Zero td { border: 0; border-bottom: 2px solid #666666; }
+
+.chordizer .chord.small table .Fret td:nth-child(1),
+.chordizer .chord.small table .Fret td:nth-child(2),
+.chordizer .chord.small table .Fret td:nth-child(3),
+.chordizer .chord.small table .Fret td:nth-child(4) { border-left-width: 1px; }
+.chordizer .chord.small table .Fret td:last-child   { width: 1px; }
+
+.chordizer .chord.small:not(.hasFiveFrets) table .Fret.Fourth td {
+    border-bottom: 1px solid #666666;
+}
+
+.chordizer .chord.small table .Fret.Fifth td {
+    border-bottom: 1px solid #666666;
+}
+
+.chordizer .chord.small table .Fret td.Muted {
+    border-left-color: #d7cccc;
+}
+
+/* Marks */
+
+.chordizer .chord.small table .OpenString {
+    border-radius: 4px;
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--color);
+    left: -3px;
+}
+
+.chordizer .chord.small  table .OpenString .Note {
+    display: none;
+}
+
+.chordizer .chord.small table .Mute {
+    left: -3px;
+    line-height: 8px;
+    font-size: 10px;
+}
+
+.chordizer .chord.small table .Press {
+    border-radius: 4px;
+    width: 8px;
+    height: 8px;
+    top: 1px;
+    left: -5px;
+}
+
+.chordizer .chord.small table .Barre {
+    width: 12px;
+    height: 8px;
+    position: absolute;
+    top: 1px;
+    left: -5px
+}
+
+.chordizer .chord.small table .Barre.Start {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.chordizer .chord.small table .Barre.End {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    width: 9px;
+}
+
+.chordizer .chord.small table .Press .Finger,
+.chordizer .chord.small table .Barre .Finger {
+    display: none;
+}
+
+/* ------------- LARGE -------------- */
+
+.chordizer .chord.large { width: 130px; }
+.chordizer .chord.large .ChordName { font-size: 18px; }
+.chordizer .chord.large .FretNum {
+    left: -18px;
+    top: 44px;
+    font-size: 18px;
+}
+
+.chordizer .chord.large table .Fret td {
+    border-top: 2px solid #666666;
+    border-left: 2px solid #666666;
+    height: 38px;
+}
+
+.chordizer .chord.large table .Fret.Zero td { border: 0; border-bottom: 10px solid #666666; }
+
+.chordizer .chord.large table .Fret td:nth-child(1) { border-left-width: 6px; }
+.chordizer .chord.large table .Fret td:nth-child(2) { border-left-width: 5px; }
+.chordizer .chord.large table .Fret td:nth-child(3) { border-left-width: 4px; }
+.chordizer .chord.large table .Fret td:nth-child(4) { border-left-width: 3px; }
+.chordizer .chord.large table .Fret td:last-child   { width: 1px; }
+
+.chordizer .chord.large:not(.hasFiveFrets) table .Fret.Fourth td {
+    border-bottom: 2px solid #666666;
+}
+
+.chordizer .chord.large table .Fret.Fifth td {
+    border-bottom: 2px solid #666666;
+}
+
+.chordizer .chord.large table .Fret td.Muted {
+    border-left-color: #d7cccc;
+}
+
+/* Marks */
+
+.chordizer .chord.large table .OpenString {
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--color);
+    left: -10px;
+}
+
+.chordizer .chord.large  table .OpenString .Note {
+    left: 2px;
+    top: -2px;
+    font-size: 12px;
+}
+
+.chordizer .chord.large table .Mute {
+    left: -8px;
+    line-height: 20px;
+    font-size: 24px;
+}
+
+.chordizer .chord.large table .Press {
+    border-radius: 11px;
+    width: 22px;
+    height: 22px;
+    top: 6px;
+    left: -12px;
+}
+
+.chordizer .chord.large table .Barre {
+    width: 30px;
+    height: 22px;
+    position: absolute;
+    top: 6px;
+    left: -12px
+}
+
+.chordizer .chord.large table .Barre.Start {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.chordizer .chord.large table .Barre.End {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    width: 18px;
+}
+
+.chordizer .chord.large table .Press .Finger,
+.chordizer .chord.large table .Barre .Finger {
+    font-size: 15px;
+    top: -2px;
+    left: 4px;
+    width: 12px;
+}
