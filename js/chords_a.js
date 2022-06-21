@@ -1,59 +1,53 @@
 
-function addChordA(parentElemId, attributes) {
-    addChord(parentElemId, "A", 0, function(b) {
-        addMute(b, "LowE");
-        addOpenString(b, ["A", "HighE"]);
-        addFretPress(b, 2, ["D", "G", "H"]);
-    }, attributes);
+Chordizer.A = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "A", 0, attributes)
+        .addMute("LowE")
+        .addOpenString(["A", "HighE"])
+        .addFretPress(2, ["D", "G", "H"]);
 }
 
 /* Mol chords */
 
-function addChordAm(parentElemId, attributes) {
-    addChord(parentElemId, "Am", 0, function(b) {
-        addMute(b, "LowE");
-        addOpenString(b, ["A", "HighE"]);
-        addFretPress(b, 1, "H");
-        addFretPress(b, 2, ["D", "G"]);
-    }, attributes);
+Chordizer.Am = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "Am", 0, attributes)
+        .addMute("LowE")
+        .addOpenString(["A", "HighE"])
+        .addFretPress(1, "H")
+        .addFretPress(2, ["D", "G"]);
 }
 
-function addChordAm_G(parentElemId, attributes) {
-    addChord(parentElemId, "Am/G", 0, function(b) {
-        addMute(b, "A");
-        addOpenString(b, ["G", "HighE"]);
-        addFretPress(b, 1, "H");
-        addFretPress(b, 2, ["D"]);
-        addFretPress(b, 3, "LowE");
-    }, attributes);
+Chordizer.Am_G = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "Am/G", 0, attributes)
+        .addMute("A")
+        .addOpenString(["G", "HighE"])
+        .addFretPress(1, "H")
+        .addFretPress(2, ["D"])
+        .addFretPress(3, "LowE");
 }
 
-function addChordAm7(parentElemId, attributes) {
-    addChord(parentElemId, "Am7", 0, function(b) {
-        addMute(b, "LowE");
-        addOpenString(b, ["A", "G", "HighE"]);
-        addFretPress(b, 2, "D");
-        addFretPress(b, 1, ["H"]);
-    }, attributes);
+Chordizer.Am7 = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "Am7", 0, attributes)
+        .addMute("LowE")
+        .addOpenString(["A", "G", "HighE"])
+        .addFretPress(2, "D")
+        .addFretPress(1, ["H"]);
 }
 
 /* # chords */
 
-function addChordB(parentElemId, attributes) {
-    addChord(parentElemId, "B", 1, function(b) {
-        addMute(b, "LowE");
-        addBarre(b, 1, "A", "HighE");
-        addFretPress(b, 3, ["D", "G", "H"]);
-    }, attributes);
+Chordizer.B = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "B", 1, attributes)
+        .addMute("LowE")
+        .addBarre(1, "A", "HighE")
+        .addFretPress(3, ["D", "G", "H"]);
 }
 
 /* Mol chords */
 
-function addChordBm(parentElemId, attributes) {
-    addChord(parentElemId, "Bm", 1, function(b) {
-        addMute(b, "LowE");
-        addBarre(b, 1, "A", "HighE");
-        addFretPress(b, 2, "H");
-        addFretPress(b, 3, ["D", "G"]);
-    }, attributes);
+Chordizer.Bm = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "Bm", 1, attributes)
+        .addMute("LowE")
+        .addBarre(1, "A", "HighE")
+        .addFretPress(2, "H")
+        .addFretPress(3, ["D", "G"]);
 }

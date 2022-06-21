@@ -1,43 +1,38 @@
 
-function addChordG(parentElemId, attributes) {
-    addChord(parentElemId, "G", 0, function(b) {
-        addOpenString(b, ["G", "D"]);
-        addFretPress(b, 3, ["LowE", "H", "HighE"]);
-        addFretPress(b, 2, "A");
-    }, attributes);
+Chordizer.G = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "G", 0, attributes)
+        .addOpenString(["G", "D"])
+        .addFretPress(3, ["LowE", "H", "HighE"])
+        .addFretPress(2, "A");
 }
 
-function addChordGv2(parentElemId, attributes) {
-    addChord(parentElemId, "G", 0, function(b) {
-        addOpenString(b, ["G", "D", "H"]);
-        addFretPress(b, 3, ["LowE", "HighE"]);
-        addFretPress(b, 2, "A");
-    }, attributes);
+Chordizer.Gv2 = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "G", 0, attributes)
+        .addOpenString(["G", "D", "H"])
+        .addFretPress(3, ["LowE", "HighE"])
+        .addFretPress(2, "A");
 }
 
-function addChordG_H(parentElemId, attributes) {
-    addChord(parentElemId, "G/H", 0, function(b) {
-        addMute(b, ["LowE", "HighE"]);
-        addOpenString(b, ["G", "D", "H"]);
-        addFretPress(b, 2, "A");
-    }, attributes);
+Chordizer.G_H = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "G/H", 0, attributes)
+        .addMute(["LowE", "HighE"])
+        .addOpenString(["G", "D", "H"])
+        .addFretPress(2, "A");
 }
 
 /* Mol chords */
 
-function addChordGm(parentElemId, attributes) {
-    addChord(parentElemId, "Gm", 3, function(b) {
-        addBarre(b, 1, "LowE", "HighE");
-        addFretPress(b, 3, ["A", "D"]);
-    }, attributes);
+Chordizer.Gm = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "Gm", 3, attributes)
+        .addBarre(1, "LowE", "HighE")
+        .addFretPress(3, ["A", "D"]);
 }
 
 /* # chords */
 
-function addChordGis(parentElemId, attributes) {
-    addChord(parentElemId, "G#", 4, function(b) {
-        addBarre(b, 1, "LowE", "HighE");
-        addFretPress(b, 2, "G");
-        addFretPress(b, 3, ["A", "D"]);
-    }, attributes);
+Chordizer.Gis = function (parentElemId, attributes) {
+    this.addChord(parentElemId, "G#", 4, attributes)
+        .addBarre(1, "LowE", "HighE")
+        .addFretPress(2, "G")
+        .addFretPress(3, ["A", "D"]);
 }
