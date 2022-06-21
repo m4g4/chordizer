@@ -164,7 +164,7 @@ var Chordizer = (function ( $ ) {
     });
 
     var addCustomChord = function (parentElementId, chordName, fretNumber, attributes) {
-        return addChord($("#" + parentElementId), chordName, fretNumber, attributes);
+        return this.addChord($("#" + parentElementId), chordName, fretNumber, attributes);
     }
 
     var addChord = function (parentElement, chordName, fretNumber, attributes) {
