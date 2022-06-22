@@ -49,14 +49,14 @@ var Chordizer = (function ( $ ) {
         return this;
     }
 
-    Fretboard.prototype.addMute = function (fretboard, strings) {
+    Fretboard.prototype.addMute = function (strings) {
         if (Array.isArray(strings)) {
             var self = this;
             strings.forEach(function (str) {
-                self.addMuteOne(fretboard, str);
+                self.addMuteOne(str);
             });
         } else {
-            this.addMuteOne(fretboard, strings);
+            this.addMuteOne(strings);
         }
 
         return this;
