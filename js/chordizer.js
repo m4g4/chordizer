@@ -163,6 +163,10 @@ var Chordizer = (function ( $ ) {
 
     });
 
+    var addChordBySymbol = function (chordizerElement, chordSymbol, attributes) {
+        window["Chordizer"][chordSymbol](chordizerElement, attributes);
+    }
+
     var addCustomChord = function (parentElementId, chordName, fretNumber, attributes) {
         return this.addChord($("#" + parentElementId), chordName, fretNumber, attributes);
     }
@@ -254,6 +258,7 @@ var Chordizer = (function ( $ ) {
     }
 
     return {
+        addChordBySymbol: addChordBySymbol,
         addCustomChord: addCustomChord,
         addChord: addChord
     };
