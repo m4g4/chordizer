@@ -33,7 +33,7 @@ Chordizer.Dsus4 = function (parentElemId, attributes) {
 /* Mol chords */
 
 Chordizer.Dm = function (parentElemId, attributes) {
-    this.addChord(parentElemId, "Dm", 3, attributes)
+    this.addChord(parentElemId, "Dm", 0, attributes)
         .addMute(["LowE", "A"])
         .addOpenString("D")
         .addFretPress(1, "HighE")

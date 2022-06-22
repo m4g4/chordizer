@@ -174,17 +174,17 @@ var Chordizer = (function ( $ ) {
         Chordizer[chordSymbol](chordizerElement, attributes);
     }
 
-    var addCustomChord = function (parentElementId, chordSymbol, fretNumber, attributes) {
-        return this.addChord($("#" + parentElementId), chordSymbol, fretNumber, attributes);
+    var addCustomChord = function (parentElementId, chordTitle, fretNumber, attributes) {
+        return this.addChord($("#" + parentElementId), chordTitle, fretNumber, attributes);
     }
 
-    var addChord = function (parentElement, chordSymbol, fretNumber, attributes) {
+    var addChord = function (parentElement, chordTitle, fretNumber, attributes) {
 
         if (!attributes) {
             attributes = {};
         }
 
-        chordSymbol = chordSymbol
+        var chordSymbol = chordTitle
             .replace('#', 'is')
             .replace('/', '_');
 
@@ -204,7 +204,7 @@ var Chordizer = (function ( $ ) {
         extraClass += attributes['large'] ? " large" : "";
 
         if (attributes['customTitle']) {
-            chordSymbol = attributes['customTitle'];
+            chordName = attributes['customTitle'];
         }
 
         parentElement.append(
@@ -251,7 +251,7 @@ var Chordizer = (function ( $ ) {
                 <td class=\"HighE\"></td>\
             </tr>" + fifthFretRow +
             "</tbody></table>\
-            <div class=\"ChordName\">" + chordSymbol + "</div>\
+            <div class=\"ChordName\">" + chordTitle + "</div>\
             </div>"
         );
 
