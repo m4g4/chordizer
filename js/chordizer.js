@@ -142,9 +142,7 @@ var Chordizer = (function ( $ ) {
                 return;
             }
 
-            var chordName = elem.data("chord")
-                .replace('#', 'is')
-                .replace('/', '_');
+            var chordSymbol = elem.data("chord");
 
             var attributes = {};
 
@@ -158,26 +156,35 @@ var Chordizer = (function ( $ ) {
                 attributes['customTitle'] = elem.data("title");
             }
 
-            window["Chordizer"][chordName](elem, attributes);
+            Chordizer.addChordBySymbol(elem, chordSymbol, attributes);
         });
 
     });
 
     var addChordBySymbol = function (chordizerElement, chordSymbol, attributes) {
-        window["Chordizer"][chordSymbol](chordizerElement, attributes);
+
+        chordSymbol = chordSymbol
+            .replace('#', 'is')
+            .replace('/', '_');
+
+        if (!Chordizer[chordSymbol]) {
+            console.error("Chord symbol " + chordSymbol + " does not exist!");
+            return;
+        }
+        Chordizer[chordSymbol](chordizerElement, attributes);
     }
 
-    var addCustomChord = function (parentElementId, chordName, fretNumber, attributes) {
-        return this.addChord($("#" + parentElementId), chordName, fretNumber, attributes);
+    var addCustomChord = function (parentElementId, chordSymbol, fretNumber, attributes) {
+        return this.addChord($("#" + parentElementId), chordSymbol, fretNumber, attributes);
     }
 
-    var addChord = function (parentElement, chordName, fretNumber, attributes) {
+    var addChord = function (parentElement, chordSymbol, fretNumber, attributes) {
 
         if (!attributes) {
             attributes = {};
         }
 
-        var chordSymbol = chordName
+        chordSymbol = chordSymbol
             .replace('#', 'is')
             .replace('/', '_');
 
@@ -197,7 +204,7 @@ var Chordizer = (function ( $ ) {
         extraClass += attributes['large'] ? " large" : "";
 
         if (attributes['customTitle']) {
-            chordName = attributes['customTitle'];
+            chordSymbol = attributes['customTitle'];
         }
 
         parentElement.append(
@@ -244,7 +251,7 @@ var Chordizer = (function ( $ ) {
                 <td class=\"HighE\"></td>\
             </tr>" + fifthFretRow +
             "</tbody></table>\
-            <div class=\"ChordName\">" + chordName + "</div>\
+            <div class=\"ChordName\">" + chordSymbol + "</div>\
             </div>"
         );
 
