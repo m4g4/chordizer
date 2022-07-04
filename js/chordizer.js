@@ -40,6 +40,7 @@ var Chordizer = (function ( $ ) {
 
     Fretboard.prototype.addMuteOne = function (str) {
         this.jqObject.find(".Fret.Zero ." +str).append("<div class=\"Mute\">X</div>");
+        this.jqObject.find(".Fret.Previous ." +str).addClass("Muted");
         this.jqObject.find(".Fret.First ." +str).addClass("Muted");
         this.jqObject.find(".Fret.Second ." +str).addClass("Muted");
         this.jqObject.find(".Fret.Third ." +str).addClass("Muted");
@@ -218,6 +219,14 @@ var Chordizer = (function ( $ ) {
                 <td class=\"H\"></td>\
                 <td class=\"HighE\"></td>\
             </tr>\
+            <tr class=\"Fret Previous\">\
+                <td class=\"LowE\"></div></td>\
+                <td class=\"A\"></td>\
+                <td class=\"D\"></td>\
+                <td class=\"G\"></td>\
+                <td class=\"H\"></td>\
+                <td class=\"HighE\"></td>\
+            </tr>\
             <tr class=\"Fret First\">\
                 <td class=\"LowE\"></td>\
                 <td class=\"A\"></td>\
@@ -257,7 +266,9 @@ var Chordizer = (function ( $ ) {
 
         var chordElement = parentElement.find(".chord" + "." + chordSymbol);
 
-        if (fretNumber > 0) {
+        if (fretNumber <= 1) {
+            chordElement.addClass("FromZeroFret");
+        } else {
             chordElement.prepend("<div class=\"FretNum\">" + fretNumber + ".</div>");
         }
 
