@@ -25,7 +25,7 @@
     position: relative;
     height: 0px;
     left: -14px;
-    top: 28px;
+    top: 22px;
     font-size: 14px;
 }
 
@@ -187,7 +187,7 @@
 .chordizer .chord.small .ChordName { font-size: 12px; }
 .chordizer .chord.small .FretNum {
     left: -12px;
-    top: 13px;
+    top: 11px;
     font-size: 12px;
 }
 
@@ -279,7 +279,7 @@
 .chordizer .chord.large .ChordName { font-size: 18px; }
 .chordizer .chord.large .FretNum {
     left: -18px;
-    top: 56px;
+    top: 52px;
     font-size: 18px;
 }
 
