@@ -1,3 +1,22 @@
+var ALPHABET = ["A", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
+var SupportedChordExtensions = [
+    "", // basic major chord
+    "m",
+    "6",
+    "7",
+    "9",
+    "m6",
+    "m7",
+    "maj7",
+    "dim",
+    "dim7",
+    "aug",
+    "sus",
+    "sus2",
+    "sus4",
+    "add9",
+];
+
 var Chordizer = (function ($) {
     var STRING_TONES = ["LowE", "A", "D", "G", "H", "HighE"];
 
@@ -192,14 +211,14 @@ var Chordizer = (function ($) {
     var initializeChord = function (element) {
         var elem = $(element);
         if (typeof elem.attr("custom") !== "undefined") {
-            return;
+            return false;
         }
 
         if (typeof elem.attr("data-chord") === "undefined") {
             console.error(
                 "Cannot render chord element. Attribute data-chord missing!"
             );
-            return;
+            return false;
         }
 
         var chordSymbol = elem.attr("data-chord");
@@ -219,31 +238,37 @@ var Chordizer = (function ($) {
         }
 
         addChordBySymbol(elem, chordSymbol, attributes);
+
+        return true;
     };
 
     var initialize = function () {
         $(".chordizer").each(function (_, element) {
-            initializeChord(element);
-            mutationObserver.observe(element, { attributes: true });
+            if (initializeChord(element))
+                mutationObserver.observe(element, { attributes: true });
         });
     };
 
-    var addChordBySymbol = function (
-        chordizerElement,
-        chordSymbol,
-        attributes
-    ) {
-        chordSymbol = chordSymbol.replace("#", "is").replace("/", "_");
-        var version = attributes["chord-version"];
-        if (version && Chordizer[chordSymbol + "v" + version]) {
-            chordSymbol = chordSymbol + "v" + version;
+    var toChordId = function (chordSymbol) {
+        return chordSymbol
+            .replace("#", "is")
+            .replace("/", "_")
+            .replace("+", "aug");
+    };
+
+    var addChordBySymbol = function (parentElement, chordSymbol, attributes) {
+        var chordId = toChordId(chordSymbol);
+
+        var version = attributes && attributes["chord-version"];
+        if (version && Chordizer[chordId + "v" + version]) {
+            chordId = chordId + "v" + version;
         }
 
-        if (!Chordizer[chordSymbol]) {
-            console.error("Chord symbol " + chordSymbol + " does not exist!");
+        if (!Chordizer[chordId]) {
+            console.error("Chord " + chordId + " does not exist!");
             return;
         }
-        Chordizer[chordSymbol](chordizerElement, attributes);
+        Chordizer[chordId](parentElement, attributes);
     };
 
     var addCustomChord = function (
@@ -270,7 +295,7 @@ var Chordizer = (function ($) {
             attributes = {};
         }
 
-        var chordSymbol = chordTitle.replace("#", "is").replace("/", "_");
+        var chordId = toChordId(chordTitle);
 
         var fretTds =
             '\
@@ -296,7 +321,7 @@ var Chordizer = (function ($) {
 
         parentElement.append(
             '<div class="chord ' +
-                chordSymbol +
+                chordId +
                 extraClass +
                 '">\
             <table>\
@@ -326,7 +351,7 @@ var Chordizer = (function ($) {
             </div>"
         );
 
-        var chordElement = parentElement.find(".chord" + "." + chordSymbol);
+        var chordElement = parentElement.find(".chord" + "." + chordId);
 
         if (fretNumber <= 1) {
             chordElement.addClass("FromZeroFret");
@@ -345,3 +370,9 @@ var Chordizer = (function ($) {
         addChord: addChord,
     };
 })(jQuery);
+
+module.exports = {
+    Chordizer,
+    ALPHABET,
+    SupportedChordExtensions,
+};

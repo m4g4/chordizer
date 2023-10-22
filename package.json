@@ -1,0 +1,23 @@
+{
+  "name": "chordizer",
+  "version": "1.1.0",
+  "description": "A javascript library for visualizing guitar chord structures",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m4g4/chordizer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m4g4/chordizer/issues"
+  },
+  "homepage": "https://github.com/m4g4/chordizer#readme",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jquery": "^3.7.1"
+  }
+}
